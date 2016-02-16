@@ -5,7 +5,7 @@
 
 apply plugin: 'war'
 apply plugin: 'eclipse'
-apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'org.akhikhl.gretty'
 
 
 sourceCompatibility = 1.8
@@ -20,7 +20,7 @@ buildscript {
 	}
 	
 	dependencies {
-		classpath "com.bmuschko:gradle-tomcat-plugin:2.2.4"
+		classpath "org.akhikhl.gretty:gretty:+"
 	}
 }
 
@@ -83,14 +83,6 @@ dependencies {
 	runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
 	
 	provided "javax.servlet:javax.servlet-api:4.+"
-	def tomcatVersion = '8.0.5'
-	tomcat	"org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-			"org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-			"org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
-			//"org.apache.tomcat:catalina:${tomcatVersion}",
-           // "org.apache.tomcat:coyote:${tomcatVersion}",
-           // "org.apache.tomcat:jasper:${tomcatVersion}"
-	
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
@@ -98,20 +90,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-tomcat {
-    httpPort = 8080
-    httpsPort = 8091
-    enableSSL = true
-}
-
 //注意下面这个配置，新版本gradle如果不使用数组添加的话会导致eclipse频繁报错
 eclipse.classpath.plusConfigurations += [configurations.provided]
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
-
-tomcatRun.contextPath = '/PCCIMS'
-tomcatRunWar.contextPath = '/PCCIMS'
 
 task wrapper(type:Wrapper) {
 	gradleVersion = '2.11'
