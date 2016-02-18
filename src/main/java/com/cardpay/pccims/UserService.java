@@ -1,7 +1,8 @@
 package com.cardpay.pccims;
 
 import org.springframework.stereotype.Service;
-import com.cardpay.pccims.dao.User;
+
+import com.cardpay.pccims.domain.User;
 
 @Service
 public class UserService {

@@ -67,7 +67,7 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.baobaotao.domain.User</value>
+				<value>com.cardpay.pccims.domain.user</value>
 			</list>
 		</property>
 	</bean>
@@ -91,8 +91,8 @@
 	<!-- Excel及PDF视图解析器配置 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
 		p:order="10" />
-	<bean id="userListExcel" class="com.baobaotao.web.UserListExcelView" />
-	<bean id="userListPdf" class="com.baobaotao.web.UserListPdfView" />
+	<bean id="userListExcel" class="com.cardpay.pccims.web.UserListExcelView" />
+	<bean id="userListPdf" class="com.cardpay.pccims.web.UserListPdfView" />
 
 	<!-- XMl及JSON视图解析器配置 -->
 	<bean id="userListJson"
@@ -104,12 +104,12 @@
 		p:modelKey="userList" p:marshaller-ref="xmlMarshaller" />
 
 	<!-- XML文件或国际化资源文件定义视图 -->
-	<bean class="org.springframework.web.servlet.view.XmlViewResolver"
+<!--<bean class="org.springframework.web.servlet.view.XmlViewResolver"
 		p:order="20" p:location="/WEB-INF/views/baobaotao-views.xml" />
 
 	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver"
 		p:order="30" p:basename="conf/i18n/views" />
-
+-->
     <!-- 协商多种视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"

@@ -1,4 +1,4 @@
-package com.cardpay.pccims.dao;
+package com.cardpay.pccims.domain;
 
 import java.util.Date;
 import javax.validation.constraints.DecimalMin;
@@ -10,7 +10,6 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.cardpay.pccims.domain.Dept;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
