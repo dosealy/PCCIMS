@@ -1,6 +1,6 @@
 /**
 *
-* create
+* created by licho
 *
 **/
 apply plugin: 'war'
@@ -75,21 +75,29 @@ dependencies {
     compile(
 	    "org.hibernate:hibernate-core:${hibernate_version}",
 	    "org.hibernate:hibernate-ehcache:${hibernate_version}",
-	    "org.hibernate:hibernate-validator:4.3.2.Final",
+//	    "org.hibernate:hibernate-validator:4.3.2.Final",
+//	    "org.hibernate:hibernate-validator-annotation-processor:4.3.2.Final",
 	    "org.springframework:spring-core:${spring_version}",
+	    "org.springframework:spring-context-support:${spring_version}",
+	    "org.springframework:spring-expression:${spring_version}",
+	    "org.springframework:spring-test:${spring_version}",
 	    "org.springframework:spring-beans:${spring_version}",
 	    "org.springframework:spring-context:${spring_version}",
 	    "org.springframework:spring-tx:${spring_version}",
 	    "org.springframework:spring-web:${spring_version}",
+	    "org.springframework:spring-oxm:${spring_version}",
 	    "org.springframework:spring-webmvc:${spring_version}",
 	    "net.sf.ehcache:ehcache:2.9.0",
 	    "mysql:mysql-connector-java:5.1.37",
+	    "com.fasterxml.jackson.core:jackson-core:2.5.0",
+	    "com.fasterxml.jackson.core:jackson-databind:2.5.0",
+	    "com.fasterxml.jackson.core:jackson-annotations:2.5.0",
 	    "org.slf4j:slf4j-api:1.7.14",
 	    "log4j:log4j:1.2.17",
 	    "javax.validation:validation-api:1.1.0.Final",
 	    "com.thoughtworks.xstream:xstream:1.4.7",
 	    "javax.servlet:jstl:1.2",
-	    "taglibs:standard:1.1.2"
+	    "taglibs:standard:1.1.2"	    
   	)
   	
 

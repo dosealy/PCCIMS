@@ -11,6 +11,7 @@ import com.cardpay.pccims.domain.User;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
 	@RequestMapping("/register")
 	public String register(){
 		return "user/register";
