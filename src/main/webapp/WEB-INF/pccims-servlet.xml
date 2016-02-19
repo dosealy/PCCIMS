@@ -10,13 +10,14 @@
 
 	<context:component-scan base-package="com.cardpay.pccims.web" />
 	<context:component-scan base-package="com.cardpay.pccims.controller" />
-	
+
+	<mvc:resources location="/,classpath:/META-INF/publicResources/" mapping="/resources/**" cache-period="3153600"/>
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		p:order="10"/>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:order="100" p:viewClass="org.springframework.web.servlet.view.JstlView"
 		p:prefix="/WEB-INF/views/jsp/" p:suffix=".jsp" />
-
-	<mvc:annotation-driven conversion-service="conversionService" />
 
 	<util:list id="messageConverters">
 		<bean
@@ -33,6 +34,10 @@
 		<bean
 			class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 	</util:list>
+	
+	<bean id="userListXml" class="org.springframework.web.servlet.view.xml.MarshallingView"
+		p:modelKey="userList"
+		p:marshaller-ref="xmlMarshaller"/>
 
 	<bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
 		<property name="streamDriver">
@@ -46,6 +51,9 @@
 		</property>
 	</bean>
 		
+	<bean id="userListJson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
+		p:modelKeys="userList"/>
+		
 	<mvc:annotation-driven conversion-service="conversionService" />
 	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -56,4 +64,90 @@
 		</property>
 	</bean>
 	
+	<!-- FreeMarker基础设施及视图解析器配置 -->
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
+		p:templateLoaderPath="/WEB-INF/ftl" p:defaultEncoding="UTF-8">
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="classic_compatible">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+		p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8" />	
+
+	<mvc:annotation-driven content-negotiation-manager="contentManager"/>
+	<bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+		p:favorPathExtension="false"
+		p:ignoreAcceptHeader="true"
+		p:favorParameter="true"
+		p:parameterName="content">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html"/>
+				<entry key="xml" value="application/xml"/>
+				<entry key="json" value="application/xml"/>
+			</map>
+		</property>		
+	</bean>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">  
+        <property name="contentNegotiationManager" ref="contentManager"/>  
+        <property name="viewResolvers">
+            <list>  
+                <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+                    <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>  
+                    <property name="viewNames" value=".ftl"/>  
+                    <property name="contentType" value="text/html; charset=utf-8"/>  
+                    <property name="cache" value="true" />  
+                    <property name="prefix" value="" />  
+                    <property name="suffix" value="" />  
+                    <property name="order" value="2"/>  
+                </bean>  
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+                    <property name="prefix" value="/WEB-INF/views/jsp/"></property> 
+                    <property name="suffix" value=".jsp"></property>
+                </bean>  
+            </list>  
+        </property>  
+        <property name="defaultViews">  
+            <list>  
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
+                	p:modelKeys="userList">                     
+                </bean>  
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView"
+                	p:modelKey="userList" p:marshaller-ref="xmlMarshaller">  
+                    
+                </bean>  
+                <!-- <bean class="com.wonders.stpt.bid.controller.JXLExcelView"/> -->  
+            </list>  
+        </property>  
+    </bean>  
+	
+	<!--国际化资源  -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>conf/i18n/messages</value>
+				<value>conf/i18n/content</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 本地化解析 -->  
+	<bean id="localeResolver"
+		  class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+		  p:cookieName="clientLanguage"
+		  p:cookieMaxAge="100000"
+		  p:cookiePath="/" 
+		  p:defaultLocale="zh_CN"/>
+	<mvc:interceptors>
+	     <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver"
+		p:order="20"
+		p:location="WEB-INF/views/pccims-views.xml">		
+	</bean>
 </beans>

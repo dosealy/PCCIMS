@@ -11,7 +11,7 @@
   </style>
 </head>
 <body>
-  <form:form modelAttribute="user"  action="/pccims/user/handle91.html">
+  <form:form modelAttribute="user"  action="/user/handle91.html">
      <form:errors path="*" cssClass="errorClass" element="div"/>
     <table>
 	    <tr>
