@@ -1,22 +1,50 @@
 package com.cardpay.pccims.domain;
 
 import java.util.Date;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("message")
 public class User {
-
+	
+//	@XStreamAlias("id")
+//	@XStreamAsAttribute
 	private String userId;
-
+	
+//	@XStreamAsAttribute
+	@Pattern(regexp="w{4,30}")
 	private String userName;
 	
+//	@XStreamAsAttribute
+	@Pattern(regexp="S{6,30}")
 	private String password;
-
+	
+//	@XStreamAsAttribute
+	@Length(min=2, max=100)
 	private String realName;
-
+	
+//	@XStreamAsAttribute
+	@Past
+	@DateTimeFormat(pattern="yyy-MM-dd")
 	private Date birthday;
-
+	
+//	@XStreamAsAttribute
+	@DecimalMin(value="1000.00")
+	@DecimalMax(value="100000.00")
+	@NumberFormat(pattern="#,###.##")
 	private long salary;
-
+	
+//	@XStreamOmitField
 	private Dept dept;
 	
 	public String getUserId() {

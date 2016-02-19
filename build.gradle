@@ -73,11 +73,7 @@ allprojects {
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile(
-	    "org.hibernate:hibernate-core:${hibernate_version}",
-	    "org.hibernate:hibernate-ehcache:${hibernate_version}",
-//	    "org.hibernate:hibernate-validator:4.3.2.Final",
-//	    "org.hibernate:hibernate-validator-annotation-processor:4.3.2.Final",
-	    "org.springframework:spring-core:${spring_version}",
+    	"org.springframework:spring-core:${spring_version}",
 	    "org.springframework:spring-context-support:${spring_version}",
 	    "org.springframework:spring-expression:${spring_version}",
 	    "org.springframework:spring-test:${spring_version}",
@@ -87,23 +83,29 @@ dependencies {
 	    "org.springframework:spring-web:${spring_version}",
 	    "org.springframework:spring-oxm:${spring_version}",
 	    "org.springframework:spring-webmvc:${spring_version}",
-	    "net.sf.ehcache:ehcache:2.9.0",
-	    "mysql:mysql-connector-java:5.1.37",
+	    
+	    "org.hibernate:hibernate-core:${hibernate_version}",
+	    "org.hibernate:hibernate-ehcache:${hibernate_version}",
+	    "org.hibernate:hibernate-validator:5.1.3.Final",
+	    "org.hibernate:hibernate-validator-annotation-processor:5.1.3.Final",
+
 	    "com.fasterxml.jackson.core:jackson-core:2.5.0",
 	    "com.fasterxml.jackson.core:jackson-databind:2.5.0",
 	    "com.fasterxml.jackson.core:jackson-annotations:2.5.0",
+	    
+	    "net.sf.ehcache:ehcache:2.9.0",
+	    "mysql:mysql-connector-java:5.1.37",
 	    "org.slf4j:slf4j-api:1.7.14",
 	    "log4j:log4j:1.2.17",
-	    "javax.validation:validation-api:1.1.0.Final",
-	    "com.thoughtworks.xstream:xstream:1.4.7",
+	    "javax.validation:validation-api:1.1.0.Final",	    
 	    "javax.servlet:jstl:1.2",
-	    "taglibs:standard:1.1.2"	    
+	    "taglibs:standard:1.1.2",
+	    "com.thoughtworks.xstream:xstream:1.4.7"	    
   	)
   	
 
 	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 	runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
-
 	
 	provided "javax.servlet:javax.servlet-api:4.+"
     testCompile 'junit:junit:4.12'
