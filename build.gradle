@@ -17,13 +17,13 @@ war.baseName = 'PCCIMS'
 project.webAppDirName = 'src/main/webapp'
 
 buildscript {
-	repositories {
-		jcenter()
-	}
-	
-	dependencies {
-		classpath "org.akhikhl.gretty:gretty:+"
-	}
+    repositories {
+	jcenter()
+    }
+    
+    dependencies {
+	classpath "org.akhikhl.gretty:gretty:+"
+    }
 }
 
 ext {
@@ -46,84 +46,83 @@ jar {
 }
 
 configurations {
-	provided
+    provided
 }
 
 sourceSets {
-	main {
-		resources.srcDirs = ['src/main/java']
-	}
+    main {
+	resources.srcDirs = ['src/main/java']
+    }
 }
 
 repositories {
-	mavenLocal()
-	maven {url "http://maven.oschina.net/content/groups/public/"}	
-	mavenCentral()
-	jcenter()
+    mavenLocal()
+    maven {url "http://maven.oschina.net/content/groups/public/"}	
+    mavenCentral()
+    jcenter()
 }
 
 allprojects {
-	repositories {
-	    mavenLocal()
-	    mavenCentral()
-	    maven {
-	    	url "http://127.0.0.1:8081/nexus/content/repositories/public/"
-	    }
-	}
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+        	url "http://127.0.0.1:8081/nexus/content/repositories/public/"
+        }
+    }
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {    
     compile(
-    	"org.springframework:spring-core:$spring_version",
-	    "org.springframework:spring-context-support:$spring_version",
-	    "org.springframework:spring-expression:$spring_version",
-	    "org.springframework:spring-test:$spring_version",
-	    "org.springframework:spring-beans:$spring_version",
-	    "org.springframework:spring-context:$spring_version",
-	    "org.springframework:spring-tx:$spring_version",
-	    "org.springframework:spring-web:$spring_version",
-	    "org.springframework:spring-oxm:$spring_version",
-	    "org.springframework:spring-webmvc:$spring_version",
-	    "org.springframework:spring-aop:$spring_version",
+	"org.springframework:spring-core:$spring_version",
+	"org.springframework:spring-context-support:$spring_version",
+	"org.springframework:spring-expression:$spring_version",
+	"org.springframework:spring-test:$spring_version",
+	"org.springframework:spring-beans:$spring_version",
+	"org.springframework:spring-context:$spring_version",
+	"org.springframework:spring-tx:$spring_version",
+	"org.springframework:spring-web:$spring_version",
+	"org.springframework:spring-oxm:$spring_version",
+	"org.springframework:spring-webmvc:$spring_version",
+	"org.springframework:spring-aop:$spring_version",
 	    
-	    "org.apache.shiro:shiro-core:$shiro_version",
-	    "org.apache.shiro:shiro-web:$shiro_version",
-	    "org.apache.shiro:shiro-core:$shiro_version",
-	    "org.apache.shiro:shiro-ehcache:$shiro_version",
-	    "org.apache.shiro:shiro-spring:$shiro_version",
-	    
-	    "org.hibernate:hibernate-core:$hibernate_version",
-	    "org.hibernate:hibernate-ehcache:$hibernate_version",
-	    "org.hibernate:hibernate-validator:$hibernate_validator_version",
-	    "org.hibernate:hibernate-validator-annotation-processor:$hibernate_validator_version",
+	"org.apache.shiro:shiro-core:$shiro_version",
+	"org.apache.shiro:shiro-web:$shiro_version",
+	"org.apache.shiro:shiro-core:$shiro_version",
+	"org.apache.shiro:shiro-ehcache:$shiro_version",
+	"org.apache.shiro:shiro-spring:$shiro_version",
 
-	    "com.fasterxml.jackson.core:jackson-core:$jackson_version",
-	    "com.fasterxml.jackson.core:jackson-databind:$jackson_version",
-	    "com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
-	    
-	    "net.sf.ehcache:ehcache:2.9.0",
-	    "mysql:mysql-connector-java:5.1.37",
-	    "org.slf4j:slf4j-api:1.7.14",
-	    "log4j:log4j:1.2.17",
-	    "javax.validation:validation-api:1.1.0.Final",	    
-	    "javax.servlet:jstl:1.2",
-	    "taglibs:standard:1.1.2",
-	    "com.thoughtworks.xstream:xstream:1.4.7",
-	    "org.freemarker:freemarker:2.3.21",
-	    "org.apache.commons:commons-dbcp2:2.1.1",
-	    "org.apache.commons:commons-pool2:2.4.2",
-	    "org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
-	    "org.mybatis:mybatis:3.3.1",
-	    "mysql:mysql-connector-java:5.1.38",
+	"org.hibernate:hibernate-core:$hibernate_version",
+	"org.hibernate:hibernate-ehcache:$hibernate_version",
+	"org.hibernate:hibernate-validator:$hibernate_validator_version",
+	"org.hibernate:hibernate-validator-annotation-processor:$hibernate_validator_version",
 
-  	)
+	"com.fasterxml.jackson.core:jackson-core:$jackson_version",
+	"com.fasterxml.jackson.core:jackson-databind:$jackson_version",
+	"com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
+
+	"net.sf.ehcache:ehcache:2.9.0",
+	"mysql:mysql-connector-java:5.1.37",
+	"org.slf4j:slf4j-api:1.7.14",
+	"log4j:log4j:1.2.17",
+	"javax.validation:validation-api:1.1.0.Final",	    
+	"javax.servlet:jstl:1.2",
+	"taglibs:standard:1.1.2",
+	"com.thoughtworks.xstream:xstream:1.4.7",
+	"org.freemarker:freemarker:2.3.21",
+	"org.apache.commons:commons-dbcp2:2.1.1",
+	"org.apache.commons:commons-pool2:2.4.2",
+	"org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
+	"org.mybatis:mybatis:3.3.1",
+	"mysql:mysql-connector-java:5.1.38",
+    )
   	
 
-	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-	runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
-	
-	provided "javax.servlet:javax.servlet-api:4.+"
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
+    
+    provided "javax.servlet:javax.servlet-api:4.+"
     testCompile 'junit:junit:4.12'
 }
 
@@ -140,13 +139,13 @@ gretty {
 //注意下面这个配置，新版本gradle如果不使用数组添加的话会导致eclipse频繁报错
 eclipse.classpath.plusConfigurations += [configurations.provided]
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
 }
 
 task wrapper(type:Wrapper) {
-	gradleVersion = '2.11'
-	//distributionUrl = 'http://myenterprise.com/gradle/dists'
-	distributionPath = 'gradle-dists'
+    gradleVersion = '2.11'
+    //distributionUrl = 'http://myenterprise.com/gradle/dists'
+    distributionPath = 'gradle-dists'
 }
 
 // 生成Eclipse支持时，自动生成Deployment Assembly
@@ -159,6 +158,116 @@ eclipse.classpath.file.withXml {
             map.put("name", "org.eclipse.jst.component.dependency");
             map.put("value", "/WEB-INF/lib");
             def node_attribute = new Node(node_attributes, "attribute", map);
+        }
+    }
+}
+
+/////////////////////////////////////////////////
+
+ext.versionFile = file('version.properties')
+
+task loadVersion {
+    project.version = readVersion()
+}
+
+ProjectVersion readVersion() {
+    logger.quiet 'Reading the version file.'
+
+    if (!versionFile.exists()) {
+        throw new GradleException("Required version file does not exit: $versionFile.canonicalPath")
+    }
+
+    Properties versionProps = new Properties()
+
+    versionFile.withInputStream { stream ->versionProps.load(stream) }
+
+    new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger(), versionProps.release.toBoolean())
+}
+
+task makeReleaseVersion(group: 'versioning', description: 'Makes project a release version.') << {
+    version.release = true
+    ant.propertyfile(file: versionFile) {
+        entry(key: 'release', type: 'string', operation: '=', value: 'true')
+    }
+}
+
+task createDistribution(type: Zip, dependsOn: makeReleaseVersion) {
+    from war.outputs.files
+
+    from(sourceSets*.allSource) {
+        into 'src'
+    }
+
+    from(rootDir) {
+        include versionFile.name
+        include 'project-version.properties'
+    }
+}
+
+task backupReleaseDistribution(type: Copy) {
+    from createDistribution.outputs.files
+    into "$buildDir/backup"
+}
+
+task release(dependsOn: backupReleaseDistribution) << {
+    logger.quiet 'Releasing the project...'
+}
+
+class ProjectVersion {
+    Integer major
+    Integer minor
+    Boolean release
+
+    ProjectVersion(Integer major, Integer minor) {
+        this.major = major
+        this.minor = minor
+        this.release = Boolean.FALSE
+    }
+
+    ProjectVersion(Integer major, Integer minor, Boolean release) {
+        this(major, minor)
+        this.release = release
+    }
+
+    @Override
+    String toString() {
+        "$major.$minor${release ? '' : '-SNAPSHOT'}"
+    }
+}
+
+tasks.addRule("Pattern:increment<Classifier>Version - Increments the project version classifier.") {
+    String taskName->if(taskName.startsWith('increment') && taskName.endsWith('Version')) {
+        task(taskName) << {
+            String classifier = (taskName - 'increment' - 'Version').toLowerCase()
+
+            String currentVersion = version.toString()
+
+            switch(classifier) {
+                case 'major': ++version.major
+                    break;
+                case 'minor': ++version.minor
+                    break;
+                default: throw new GradleException("Invalid version type '$classifier. Allowed types:['Major', 'minor]")
+            }
+
+            String newVersion = version.toString()
+            logger.info "Incrementing $classifier project version:$currentVersion -> $newVersion"
+
+            ant.propertyfile(file:versionFile) {
+                entry(key:classifier, type:'int', operation:'+', value:1)
+            }
+        }
+    }
+}
+
+gradle.taskGraph.whenReady {    
+    TaskExecutionGraph taskGraph->
+    if(taskGraph.hasTask(release)){
+        if(!version.release) {
+            version.release = true
+            ant.propertyfile(file: versionFile) {
+                entry(key: 'release', type: 'string', operation: '=', value: 'true')
+            }
         }
     }
 }
