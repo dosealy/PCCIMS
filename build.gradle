@@ -7,7 +7,7 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.akhikhl.gretty'
 apply from: "$rootDir/gradle/jsDependencies.gradle"
-apply from: "$rootDir/gradle/versionManage.gradle"
+//apply from: "$rootDir/gradle/versionManage.gradle"
 
 war.baseName = 'PCCIMS'
 project.webAppDirName = 'src/main/webapp'
@@ -75,48 +75,48 @@ jar {
 // In this section you declare the dependencies for your production and test code
 dependencies {    
     compile(
-	"org.springframework:spring-core:$spring_version",
-	"org.springframework:spring-context-support:$spring_version",
-	"org.springframework:spring-expression:$spring_version",
-	"org.springframework:spring-test:$spring_version",
-	"org.springframework:spring-beans:$spring_version",
-	"org.springframework:spring-context:$spring_version",
-	"org.springframework:spring-tx:$spring_version",
-	"org.springframework:spring-web:$spring_version",
-	"org.springframework:spring-oxm:$spring_version",
-	"org.springframework:spring-webmvc:$spring_version",
-	"org.springframework:spring-aop:$spring_version",
-	    
-	"org.apache.shiro:shiro-core:$shiro_version",
-	"org.apache.shiro:shiro-web:$shiro_version",
-	"org.apache.shiro:shiro-core:$shiro_version",
-	"org.apache.shiro:shiro-ehcache:$shiro_version",
-	"org.apache.shiro:shiro-spring:$shiro_version",
+        "org.springframework:spring-core:$spring_version",
+        "org.springframework:spring-context-support:$spring_version",
+        "org.springframework:spring-expression:$spring_version",
+        "org.springframework:spring-test:$spring_version",
+        "org.springframework:spring-beans:$spring_version",
+        "org.springframework:spring-context:$spring_version",
+        "org.springframework:spring-tx:$spring_version",
+        "org.springframework:spring-web:$spring_version",
+        "org.springframework:spring-oxm:$spring_version",
+        "org.springframework:spring-webmvc:$spring_version",
+        "org.springframework:spring-aop:$spring_version",
+            
+        "org.apache.shiro:shiro-core:$shiro_version",
+        "org.apache.shiro:shiro-web:$shiro_version",
+        "org.apache.shiro:shiro-core:$shiro_version",
+        "org.apache.shiro:shiro-ehcache:$shiro_version",
+        "org.apache.shiro:shiro-spring:$shiro_version",
 
-	"org.hibernate:hibernate-core:$hibernate_version",
-	"org.hibernate:hibernate-ehcache:$hibernate_version",
-	"org.hibernate:hibernate-validator:$hibernate_validator_version",
-	"org.hibernate:hibernate-validator-annotation-processor:$hibernate_validator_version",
+        "org.hibernate:hibernate-core:$hibernate_version",
+        "org.hibernate:hibernate-ehcache:$hibernate_version",
+        "org.hibernate:hibernate-validator:$hibernate_validator_version",
+        "org.hibernate:hibernate-validator-annotation-processor:$hibernate_validator_version",
 
-	"com.fasterxml.jackson.core:jackson-core:$jackson_version",
-	"com.fasterxml.jackson.core:jackson-databind:$jackson_version",
-	"com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
+        "com.fasterxml.jackson.core:jackson-core:$jackson_version",
+        "com.fasterxml.jackson.core:jackson-databind:$jackson_version",
+        "com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
 
-	"net.sf.ehcache:ehcache:2.9.0",
-	"org.slf4j:slf4j-api:1.7.14",
-	"log4j:log4j:1.2.17",
-	"javax.validation:validation-api:1.1.0.Final",	    
-	"javax.servlet:jstl:1.2",
-	"taglibs:standard:1.1.2",
-	"com.thoughtworks.xstream:xstream:1.4.7",
-	"org.freemarker:freemarker:2.3.21",
-	"org.apache.commons:commons-dbcp2:2.1.1",
-	"org.apache.commons:commons-pool2:2.4.2",
-	"org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
-	"org.mybatis:mybatis:3.3.1",
-	"mysql:mysql-connector-java:5.1.38",
+        "net.sf.ehcache:ehcache:2.9.0",
+        "org.slf4j:slf4j-api:1.7.14",
+        "log4j:log4j:1.2.17",
+        "javax.validation:validation-api:1.1.0.Final",
+        "javax.servlet:jstl:1.2",
+        "taglibs:standard:1.1.2",
+        "com.thoughtworks.xstream:xstream:1.4.7",
+        "org.freemarker:freemarker:2.3.21",
+        "org.apache.commons:commons-dbcp2:2.1.1",
+        "org.apache.commons:commons-pool2:2.4.2",
+        "org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
+        "org.mybatis:mybatis:3.3.1",
+        "mysql:mysql-connector-java:5.1.38",
     )
-  	
+        
 
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
     runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
