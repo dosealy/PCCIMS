@@ -1,0 +1,16 @@
+test {
+//	systemProperty 'items', '20'	//添加系统参数
+    jvmArgs '-Xms128m', '-Xmx256m', '-XX:MaxPermSize=128m'
+
+    testLogging {
+        showStandardStreams = true  //显示标准输出
+        exceptionFormat 'full'		//异常信息全部输出
+        events 'started', 'passed', 'skipped', 'failed'	//输出指定阶段的事件
+    }
+    forkEvery = 2				//每个fork进程中测试类的最大个数
+    maxParallelForks = determineMaxParallelForks()		// fork进程的最大数
+}
+
+def determineMaxParallelForks() {
+    (Runtime.runtime.availableProcessors() / 2) < 1 ? 1 : Runtime.runtime.availableProcessors() / 2
+}
