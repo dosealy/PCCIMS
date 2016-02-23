@@ -1,4 +1,4 @@
-ext.versionFile = file('$rootDir/version.properties')
+ext.versionFile = file('version.properties')
 
 task loadVersion {
     project.version = readVersion()

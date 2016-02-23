@@ -40,9 +40,8 @@ allprojects {
 
         mavenCentral()
         jcenter()
-    }
+    }    
 }
-
 
 configurations {
     provided

@@ -1,3 +1,9 @@
+
+configurations {
+    jquery
+}
+
+
 repositories {
     ivy {
         name 'JQuery'
@@ -8,9 +14,6 @@ repositories {
     }
 }
 
-configurations {
-    jquery
-}
 
 dependencies {
     jquery group: 'jquery', name: 'jquery', version: '1.10.0', classifier: 'min', ext: 'js'
@@ -21,4 +24,5 @@ task fetchExternalJs(type: Copy) {
     into "$webAppDir/js/ext"
 }
 
-[jettyRun, jettyRunWar, war]*.dependsOn fetchExternalJs
+
+//[tomcatRun, tomcatRunWar, war]*.dependsOn fetchExternalJs //这里有问题，还没有弄清楚
