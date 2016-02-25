@@ -7,9 +7,18 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.akhikhl.gretty'
 apply from: "$rootDir/gradle/jsDependencies.gradle"
-//apply from: "$rootDir/gradle/versionManage.gradle"
+apply from: "$rootDir/gradle/versionManage.gradle"
 
-war.baseName = 'PCCIMS'
+war {
+    baseName = 'PCCIMS'
+    from '/src/main/webapp'                             // adds a file-set to the root of the archive
+    webInf { from '/src/main/webapp/WEB-INF/' }         // adds a file-set to the WEB-INF dir.
+    classpath fileTree('lib')                           // adds a file-set to the WEB-INF/lib dir.
+    //classpath configurations.moreLibs                   // adds a configuration to the WEB-INF/lib dir.
+    webXml = file('/src/main/webapp/WEB-INF/web.xml')   // copies a file to WEB-INF/web.xml
+}
+
+//The name of the web application source directory, relative to the project directory.
 project.webAppDirName = 'src/main/webapp'
 
 buildscript {
@@ -28,7 +37,7 @@ allprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-    repositories {       
+    repositories { 
         maven {
             name "nexus"
             url "http://127.0.0.1:8081/nexus/content/repositories/public/" 
@@ -40,16 +49,23 @@ allprojects {
 
         mavenCentral()
         jcenter()
+        flatDir { dirs "lib" }
     }    
 }
 
 configurations {
+    moreLibs //配置该module在构建时， 既加载dependencies中的依赖，还加载“散装”的jar包
     provided
 }
 
 sourceSets {
     main {
-        resources.srcDirs = ['src/main/java']
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
     }
 }
 
@@ -61,18 +77,6 @@ ext {
     jackson_version = '2.5.0'
 }
 
-jar {
-    manifest {
-       // attributes("Implementation-Title": project.name,
-       //     "Implementation-Version": version,
-       //     "Main-Class": mainClassName)
-            
-       // attributes("Class-Path": configurations.compile.collect { it.getName() }.join(' '))
-        
-    }   
-}
-
-// In this section you declare the dependencies for your production and test code
 dependencies {    
     compile(
         "org.springframework:spring-core:$spring_version",
@@ -118,7 +122,7 @@ dependencies {
     )
         
 
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'javax.servlet:javax.servlet-api:4.+'
     runtime 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1'
     
     provided "javax.servlet:javax.servlet-api:4.+"
@@ -126,14 +130,10 @@ dependencies {
 }
 
 gretty {
-    port = 8080
+    port = 8082
     contextPath = '/'
     servletContainer = 'tomcat8'
 }
-
-//jacoco {
-//  toolVersion = '+'
-//}
 
 //注意下面这个配置，新版本gradle如果不使用数组添加的话会导致eclipse频繁报错
 eclipse.classpath.plusConfigurations += [configurations.provided]
@@ -148,19 +148,18 @@ task wrapper(type:Wrapper) {
 }
 
 // 生成Eclipse支持时，自动生成Deployment Assembly
-eclipse.classpath.file.withXml {
-    def node = it.asNode();
-    for (Node n : node.children()) {
-        if ("lib".equals(n.attribute("kind"))) {
-            def node_attributes = new Node(n, "attributes");
-            def map = new HashMap();
-            map.put("name", "org.eclipse.jst.component.dependency");
-            map.put("value", "/WEB-INF/lib");
-            def node_attribute = new Node(node_attributes, "attribute", map);
-        }
-    }
-}
-
+// eclipse.classpath.file.withXml {
+//     def node = it.asNode();
+//     for (Node n : node.children()) {
+//         if ("lib".equals(n.attribute("kind"))) {
+//             def node_attributes = new Node(n, "attributes");
+//             def map = new HashMap();
+//             map.put("name", "org.eclipse.jst.component.dependency");
+//             map.put("value", "/WEB-INF/lib");
+//             def node_attribute = new Node(node_attributes, "attribute", map);
+//         }
+//     }
+// }
 
 configurations.compile.resolutionStrategy {
     //采取默认的策略，即最新的。
