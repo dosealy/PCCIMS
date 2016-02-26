@@ -90,6 +90,8 @@ dependencies {
         "org.springframework:spring-oxm:$spring_version",
         "org.springframework:spring-webmvc:$spring_version",
         "org.springframework:spring-aop:$spring_version",
+        "org.springframework:spring-jdbc:$spring_version",
+
             
         "org.apache.shiro:shiro-core:$shiro_version",
         "org.apache.shiro:shiro-web:$shiro_version",
@@ -114,11 +116,13 @@ dependencies {
         "taglibs:standard:1.1.2",
         "com.thoughtworks.xstream:xstream:1.4.7",
         "org.freemarker:freemarker:2.3.21",
+        "org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
         "org.apache.commons:commons-dbcp2:2.1.1",
         "org.apache.commons:commons-pool2:2.4.2",
-        "org.codehaus.mojo:native2ascii-maven-plugin:1.0-beta-1",
         "org.mybatis:mybatis:3.3.1",
+        "org.mybatis:mybatis-spring:1.2.4",
         "mysql:mysql-connector-java:5.1.38",
+        "c3p0:c3p0:0.9.1.2"
     )
         
 

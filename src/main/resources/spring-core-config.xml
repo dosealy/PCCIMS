@@ -10,5 +10,6 @@
     <context:component-scan base-package="com.cardpay.pccims">
       <!--   <context:exclude-filter type="aspectj" expression="com.cardpay.pccims..web.*"/> -->
     </context:component-scan>
-    <context:property-placeholder location="/WEB-INF/jdbc.properties" />
+    
+    
 </beans>

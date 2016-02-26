@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
-	<context:component-scan base-package="com.cardpay.pccims.web" />
-	<context:component-scan base-package="com.cardpay.pccims.controller" />
+        <context:property-placeholder location="classpath:jdbc.properties" />
+        <context:component-scan base-package="com.cardpay.pccims.web" />
+        <context:component-scan base-package="com.cardpay.pccims.controller" />
 
-	<mvc:resources location="/,classpath:/META-INF/publicResources/" mapping="/resources/**" cache-period="3153600"/>
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
-		p:order="10"/>
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:order="100" p:viewClass="org.springframework.web.servlet.view.JstlView"
-		p:prefix="/WEB-INF/views/jsp/" p:suffix=".jsp" />
+        <mvc:resources location="/,classpath:/META-INF/publicResources/" mapping="/resources/**" cache-period="3153600"/>
+        <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="10"/>
+        <bean
+                class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+                p:order="100" p:viewClass="org.springframework.web.servlet.view.JstlView"
+                p:prefix="/WEB-INF/views/jsp/" p:suffix=".jsp" />
 
-	<util:list id="messageConverters">
-		<bean
-			class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
-			p:marshaller-ref="xmlMarshaller" p:unmarshaller-ref="xmlMarshaller">
-		</bean>
-		<bean
-			class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-	</util:list>
-	
-	<bean id="userListXml" class="org.springframework.web.servlet.view.xml.MarshallingView"
-		p:modelKey="userList"
-		p:marshaller-ref="xmlMarshaller"/>
+        <util:list id="messageConverters">
+                <bean
+                        class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+                <bean
+                        class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+                <bean
+                        class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+                <bean
+                        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
+                        p:marshaller-ref="xmlMarshaller" p:unmarshaller-ref="xmlMarshaller">
+                </bean>
+                <bean
+                        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+        </util:list>
+        
+        <bean id="userListXml" class="org.springframework.web.servlet.view.xml.MarshallingView"
+                p:modelKey="userList"
+                p:marshaller-ref="xmlMarshaller"/>
 
-	<bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
-		<property name="streamDriver">
-			<bean class="com.thoughtworks.xstream.io.xml.StaxDriver" />
-		</property>
-		<property name="annotatedClasses">
-			<list>
-				<value>com.cardpay.pccims.domain.User</value>
-				<value>com.cardpay.pccims.controller.UserController</value>
-			</list>
-		</property>
-	</bean>
-		
-	<bean id="userListJson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
-		p:modelKeys="userList"/>
-		
-	<mvc:annotation-driven conversion-service="conversionService" />
-	<bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="converters">
-			<list>
-				<bean class="com.cardpay.pccims.domain.StringToUserConverter" />
-			</list>
-		</property>
-	</bean>
-	
-	<!-- FreeMarker基础设施及视图解析器配置 -->
-	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
-		p:templateLoaderPath="/WEB-INF/ftl" p:defaultEncoding="UTF-8">
-		<property name="freemarkerSettings">
-			<props>
-				<prop key="classic_compatible">true</prop>
-			</props>
-		</property>
-	</bean>
+        <bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+                <property name="streamDriver">
+                        <bean class="com.thoughtworks.xstream.io.xml.StaxDriver" />
+                </property>
+                <property name="annotatedClasses">
+                        <list>
+                                <value>com.cardpay.pccims.domain.User</value>
+                                <value>com.cardpay.pccims.controller.UserController</value>
+                        </list>
+                </property>
+        </bean>
+                
+        <bean id="userListJson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
+                p:modelKeys="userList"/>
+                
+        <mvc:annotation-driven conversion-service="conversionService" />
+        <bean id="conversionService"
+                class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+                <property name="converters">
+                        <list>
+                                <bean class="com.cardpay.pccims.domain.StringToUserConverter" />
+                        </list>
+                </property>
+        </bean>
+        
+        <!-- FreeMarker基础设施及视图解析器配置 -->
+        <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
+                p:templateLoaderPath="/WEB-INF/ftl" p:defaultEncoding="UTF-8">
+                <property name="freemarkerSettings">
+                        <props>
+                                <prop key="classic_compatible">true</prop>
+                        </props>
+                </property>
+        </bean>
 
-	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
-		p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8" />	
+        <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+                p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8" /> 
 
-	<mvc:annotation-driven content-negotiation-manager="contentManager"/>
-	<bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
-		p:favorPathExtension="false"
-		p:ignoreAcceptHeader="true"
-		p:favorParameter="true"
-		p:parameterName="content">
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html"/>
-				<entry key="xml" value="application/xml"/>
-				<entry key="json" value="application/xml"/>
-			</map>
-		</property>		
-	</bean>
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">  
+        <mvc:annotation-driven content-negotiation-manager="contentManager"/>
+        <bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+                p:favorPathExtension="false"
+                p:ignoreAcceptHeader="true"
+                p:favorParameter="true"
+                p:parameterName="content">
+                <property name="mediaTypes">
+                        <map>
+                                <entry key="html" value="text/html"/>
+                                <entry key="xml" value="application/xml"/>
+                                <entry key="json" value="application/xml"/>
+                        </map>
+                </property>             
+        </bean>
+        <bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">  
         <property name="contentNegotiationManager" ref="contentManager"/>  
         <property name="viewResolvers">
             <list>  
@@ -113,41 +113,96 @@
         <property name="defaultViews">  
             <list>  
                 <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
-                	p:modelKeys="userList">                     
+                        p:modelKeys="userList">                     
                 </bean>  
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView"
-                	p:modelKey="userList" p:marshaller-ref="xmlMarshaller">  
+                        p:modelKey="userList" p:marshaller-ref="xmlMarshaller">  
                     
                 </bean>  
                 <!-- <bean class="com.wonders.stpt.bid.controller.JXLExcelView"/> -->  
             </list>  
         </property>  
     </bean>  
-	
-	<!--国际化资源  -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>conf/i18n/messages</value>
-				<value>conf/i18n/content</value>
-			</list>
-		</property>
-	</bean>
-	
-	<!-- 本地化解析 -->  
-	<bean id="localeResolver"
-		  class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
-		  p:cookieName="clientLanguage"
-		  p:cookieMaxAge="100000"
-		  p:cookiePath="/" 
-		  p:defaultLocale="zh_CN"/>
-	<mvc:interceptors>
-	     <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-	</mvc:interceptors>
-	
-	<bean class="org.springframework.web.servlet.view.XmlViewResolver"
-		p:order="20"
-		p:location="WEB-INF/views/pccims-views.xml">		
-	</bean>
+        
+        <!--国际化资源  -->
+        <bean id="messageSource"
+                class="org.springframework.context.support.ResourceBundleMessageSource">
+                <property name="basenames">
+                        <list>
+                                <value>conf/i18n/messages</value>
+                                <value>conf/i18n/content</value>
+                        </list>
+                </property>
+        </bean>
+        
+        <!-- 本地化解析 -->  
+        <bean id="localeResolver"
+                  class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+                  p:cookieName="clientLanguage"
+                  p:cookieMaxAge="100000"
+                  p:cookiePath="/" 
+                  p:defaultLocale="zh_CN"/>
+        <mvc:interceptors>
+             <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+        </mvc:interceptors>
+        
+        <bean class="org.springframework.web.servlet.view.XmlViewResolver"
+                p:order="20"
+                p:location="WEB-INF/views/pccims-views.xml">            
+        </bean>
+        
+        <!-- 数据源 -->
+        <!-- dataSource -->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+                destroy-method="close">
+                <!-- 数据库驱动 -->
+                <property name="driverClass" value="${jdbc.driverClass}"></property>
+                <!-- 连接URL串 -->
+                <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+                <!-- 连接用户名 -->
+                <property name="user" value="${jdbc.name}"></property>
+                <!-- 连接密码 -->
+                <property name="password" value="${jdbc.password}"></property>
+                <!-- 初始化连接池时连接数量为5个 -->
+                <property name="initialPoolSize" value="5" />
+                <!-- 允许最小连接数量为5个 -->
+                <property name="minPoolSize" value="5" />
+                <!-- 允许最大连接数量为20个 -->
+                <property name="maxPoolSize" value="20" />
+                <!-- 允许连接池最大生成100个PreparedStatement对象 -->
+                <property name="maxStatements" value="100" />
+                <!-- 连接有效时间，连接超过3600秒未使用，则该连接丢弃 -->
+                <property name="maxIdleTime" value="3600" />
+                <!-- 连接用完时，一次产生的新连接步进值为2 -->
+                <property name="acquireIncrement" value="2" />
+                <!-- 获取连接失败后再尝试10次，再失败则返回DAOException异常 -->
+                <property name="acquireRetryAttempts" value="10" />
+                <!-- 获取下一次连接时最短间隔600毫秒，有助于提高性能 -->
+                <property name="acquireRetryDelay" value="600" />
+                <!-- 检查连接的有效性 -->
+                <property name="testConnectionOnCheckin" value="true" />
+                <!-- 每个1200秒检查连接对象状态 -->
+                <property name="idleConnectionTestPeriod" value="1200" />
+                <!-- 获取新连接的超时时间为10000毫秒 -->
+                <property name="checkoutTimeout" value="10000" />
+        </bean>
+        
+        <!-- 使用spring的会话管理 -->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                <property name="dataSource" ref="dataSource" />
+                <property name="transactionFactory">
+            		<bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
+       			</property>
+                <property name="configLocation" value="classpath:conf/mybatis-config.xml" />
+        </bean>
+
+        <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+        <bean id="transactionManager"
+                class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                <property name="dataSource" ref="dataSource" />
+        </bean>
+    
+        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+                <property name="locations" value="classpath:conf/log4j.properties" />
+        </bean>
 </beans>
