@@ -1,4 +1,4 @@
-package com.cardpay.pccims.domain;
+package com.cardpay.pccims.domain.model.address;
 
 public class Address {
 	private String tel;

@@ -45,7 +45,7 @@
                 </property>
                 <property name="annotatedClasses">
                         <list>
-                                <value>com.cardpay.pccims.domain.User</value>
+                                <value>com.cardpay.pccims.domain.model.user.User</value>
                                 <value>com.cardpay.pccims.controller.UserController</value>
                         </list>
                 </property>
@@ -59,7 +59,7 @@
                 class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
                 <property name="converters">
                         <list>
-                                <bean class="com.cardpay.pccims.domain.StringToUserConverter" />
+                                <bean class="com.cardpay.pccims.application.util.StringToUserConverter" />
                         </list>
                 </property>
         </bean>

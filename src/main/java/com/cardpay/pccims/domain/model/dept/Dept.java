@@ -1,6 +1,6 @@
-package com.cardpay.pccims.domain;
+package com.cardpay.pccims.domain.model.dept;
 
-import com.cardpay.pccims.domain.Address;
+import com.cardpay.pccims.domain.model.address.Address;
 
 public class Dept {
 	private String deptId;

@@ -23,8 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import com.cardpay.pccims.UserService;
-import com.cardpay.pccims.domain.User;
+
+import com.cardpay.pccims.domain.model.user.User;
+import com.cardpay.pccims.domain.service.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -85,7 +86,7 @@ public class UserController {
 	@ModelAttribute("user")
 	public User getUser(){
 		User user = new User();
-		user.setUserId("1001");
+
 		return user;
 	}
 	
@@ -94,14 +95,8 @@ public class UserController {
 		Calendar calendar = new GregorianCalendar();
 		List<User> userList = new ArrayList<User>();
 		User user1 = new User();
-		user1.setUserName("tom");
-		user1.setRealName("汤姆");
 		calendar.set(1980, 1, 1);
-		user1.setBirthday(calendar.getTime());
 		User user2 = new User();
-		user2.setUserName("john");
-		user2.setRealName("约翰");
-		user2.setBirthday(calendar.getTime());
 		userList.add(user2);
 		userList.add(user1);
 		mm.addAttribute("userList", userList);
@@ -113,14 +108,8 @@ public class UserController {
 		Calendar calendar = new GregorianCalendar();
 		List<User> userList = new ArrayList<User>();
 		User user1 = new User();
-		user1.setUserName("tom");
-		user1.setRealName("汤姆");
 		calendar.set(1980, 1, 1);
-		user1.setBirthday(calendar.getTime());
 		User user2 = new User();
-		user2.setUserName("john");
-		user2.setRealName("约翰");
-		user2.setBirthday(calendar.getTime());
 		userList.add(user2);
 		userList.add(user1);
 		mm.addAttribute("userList", userList);
@@ -132,14 +121,8 @@ public class UserController {
 		Calendar calendar = new GregorianCalendar();
 		List<User> userList = new ArrayList<>();
 		User user1 = new User();
-		user1.setUserName("tom");
-		user1.setRealName("汤姆");
 		calendar.set(1980, 1, 1);
-		user1.setBirthday(calendar.getTime());
 		User user2 = new User();
-		user2.setUserName("john");
-		user2.setRealName("约翰");
-		user2.setBirthday(calendar.getTime());
 		userList.add(user2);
 		userList.add(user1);
 		mm.addAttribute("userList", userList);
@@ -151,14 +134,8 @@ public class UserController {
 		Calendar calendar = new GregorianCalendar();
 		List<User> userList = new ArrayList<>();
 		User user1 = new User();
-		user1.setUserName("tom");
-		user1.setRealName("汤姆");
 		calendar.set(1980, 1, 1);
-		user1.setBirthday(calendar.getTime());
 		User user2 = new User();
-		user2.setUserName("john");
-		user2.setRealName("约翰");
-		user2.setBirthday(calendar.getTime());
 		userList.add(user2);
 		userList.add(user1);
 		mm.addAttribute("userList", userList);
@@ -170,14 +147,8 @@ public class UserController {
 		Calendar calendar = new GregorianCalendar();
 		List<User> userList = new ArrayList<>();
 		User user1 = new User();
-		user1.setUserName("tom");
-		user1.setRealName("汤姆");
 		calendar.set(1980, 1, 1);
-		user1.setBirthday(calendar.getTime());
 		User user2 = new User();
-		user2.setUserName("john");
-		user2.setRealName("约翰");
-		user2.setBirthday(calendar.getTime());
 		userList.add(user2);
 		userList.add(user1);
 		mm.addAttribute("userList", userList);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.3//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cardpay.pccims.dao.userDao">
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap id="resultUser" type="User">
+		<id column="id" property="userId" />
+		<result column="name" property="userName" />
+		<result column="credits" property="credits" />
+		<result column="password" property="password" />
+		<result column="realName" property="realName" />
+		<result column="last_visit" property="lastVisit" />
+		<result column="last_ip" property="lastIp" />
+	</resultMap>
+
+	<select id="selectUsersByName" parameterType="int" resultType="User">
+		SELECT 
+			u.user_id AS userId,
+			u.user_name AS userName,
+			u.credits AS credits,
+			u.password AS password,
+			u.last_visit AS lastVisit,
+			u.last_ip AS lastIp
+		FROM user u
+		WHERE u.user_name=#{name}
+	</select>
+</mapper>

@@ -1,6 +1,7 @@
-package com.cardpay.pccims.domain;
+package com.cardpay.pccims.domain.model.user;
 
 import java.util.Date;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Past;
@@ -13,9 +14,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import com.cardpay.pccims.domain.model.dept.Dept;
+import com.cardpay.pccims.domain.shared.Entity;
 
 @XStreamAlias("message")
-public class User {
+public class User implements Entity<User> {
+	
+	
+	public User() {
+		//for hibernate
+	}
 	
 //	@XStreamAlias("id")
 //	@XStreamAsAttribute
@@ -51,55 +59,48 @@ public class User {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getPassword() {
 		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getRealName() {
 		return realName;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
-
 	public Date getBirthday() {
 		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
 	}
 
 	public long getSalary() {
 		return salary;
 	}
 
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
-
 	public Dept getDept() {
 		return dept;
 	}
 
-	public void setDept(Dept dept) {
-		this.dept = dept;
+	@Override	
+	public boolean sameIdentityAs(User other) {
+		return true;
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		return 1;
+	}
+	
+	@Override
+	public String toString() {
+		return "";
 	}
 }

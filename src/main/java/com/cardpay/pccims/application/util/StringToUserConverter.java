@@ -1,7 +1,9 @@
-package com.cardpay.pccims.domain;
+package com.cardpay.pccims.application.util;
 
 
 import org.springframework.core.convert.converter.Converter;
+
+import com.cardpay.pccims.domain.model.user.User;
 
 public class StringToUserConverter implements Converter<String,User>{
 
@@ -9,9 +11,9 @@ public class StringToUserConverter implements Converter<String,User>{
 		User user = new User();
 		if(source != null){
 			String[] items = source.split(":");
-			user.setUserName(items[0]);
-			user.setPassword(items[1]);
-			user.setRealName(items[2]);
+//			user.setUserName(items[0]);
+//			user.setPassword(items[1]);
+//			user.setRealName(items[2]);
 		}
 		return user;
 	}
