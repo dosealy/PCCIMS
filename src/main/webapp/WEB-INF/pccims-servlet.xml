@@ -189,12 +189,13 @@
         
         <!-- 使用spring的会话管理 -->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-                <property name="dataSource" ref="dataSource" />
+                <property name="dataSource" ref="dataSource" /> 
+       			<property name="mapperLocations" value="classpath*:conf/mappers/*.xml" />
+                <property name="configLocation" value="classpath:conf/mybatis-config.xml" />
+               <!--  <property name="typeAliasesPackage" value="com.cardpay.pccims.model" /> -->
                 <property name="transactionFactory">
             		<bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
        			</property>
-       			<property name="mapperLocations" value="classpath*:conf/mappers/*.xml" />
-                <property name="configLocation" value="classpath:conf/mybatis-config.xml" />
         </bean>
 
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

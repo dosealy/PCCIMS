@@ -4,7 +4,7 @@
 
 <mapper namespace="com.cardpay.pccims.dao.userDao">
 	<!-- 为了返回list 类型而定义的returnMap -->
-	<resultMap id="resultUser" type="com.cardpay.pccims.model.User">
+	<resultMap id="resultUser" type="user">
 		<id column="id" property="userId" />
 		<result column="name" property="userName" />
 		<result column="credits" property="credits" />
@@ -14,7 +14,7 @@
 		<result column="last_ip" property="lastIp" />
 	</resultMap>
 
-	<select id="selectUsersByName" parameterType="int" resultType="com.cardpay.pccims.model.User">
+	<select id="selectUsersByName" parameterType="int" resultType="user">
 		SELECT 
 			u.user_id AS userId,
 			u.user_name AS userName,

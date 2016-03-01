@@ -24,11 +24,13 @@
         	<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
 	
+<!-- 	<typeAliases>   不知为何不起作用
+		<package name="com.cardpay.pccims.model"/>
+	</typeAliases> -->
 	<typeAliases>
-	    <!-- <typeAlias alias="User" type="com.cardpay.pccims.domain.model.user.User" />	 -->	
+	    <typeAlias alias="user" type="com.cardpay.pccims.model.User" />		
 	</typeAliases>
-
-	<mappers>
-	    <!-- <mapper resource="classpath:com/cardpay/pccims/domain/model/user/User.xml" /> -->
-	</mappers>
+<!-- 	<mappers>
+	    <mapper resource="classpath:com/cardpay/pccims/domain/model/user/User.xml" />
+	</mappers> -->
 </configuration>
