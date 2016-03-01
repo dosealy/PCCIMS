@@ -1,4 +1,6 @@
-package com.cardpay.pccims.domain.model.user;
+package com.cardpay.pccims.dao;
+
+import com.cardpay.pccims.model.User;
 
 public interface userDao {
 	public User selectUsersByName(String name);

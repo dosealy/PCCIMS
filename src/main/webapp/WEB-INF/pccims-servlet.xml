@@ -3,8 +3,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
         xmlns:context="http://www.springframework.org/schema/context"
         xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
@@ -45,8 +45,8 @@
                 </property>
                 <property name="annotatedClasses">
                         <list>
-                                <value>com.cardpay.pccims.domain.model.user.User</value>
-                                <value>com.cardpay.pccims.controller.UserController</value>
+               <!--                  <value>com.cardpay.pccims.domain.model.user.User</value>
+                                <value>com.cardpay.pccims.controller.UserController</value> -->
                         </list>
                 </property>
         </bean>
@@ -59,7 +59,7 @@
                 class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
                 <property name="converters">
                         <list>
-                                <bean class="com.cardpay.pccims.application.util.StringToUserConverter" />
+                                <bean class="com.cardpay.pccims.util.StringToUserConverter" />
                         </list>
                 </property>
         </bean>
@@ -193,9 +193,15 @@
                 <property name="transactionFactory">
             		<bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
        			</property>
+       			<property name="mapperLocations" value="classpath*:conf/mappers/*.xml" />
                 <property name="configLocation" value="classpath:conf/mybatis-config.xml" />
         </bean>
 
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<property name="basePackage" value="com.cardpay.pccims.dao" />
+			<!-- optional unless there are multiple session factories defined -->
+			<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		</bean>
         <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
         <bean id="transactionManager"
                 class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -203,6 +209,11 @@
         </bean>
     
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-                <property name="locations" value="classpath:conf/log4j.properties" />
+           <property name ="locations">
+	           <list>
+	           		<value>classpath:jdbc.properties</value>
+	           </list>
+	       </property>
+	       <property name="ignoreUnresolvablePlaceholders" value="true" />
         </bean>
 </beans>

@@ -1,8 +1,8 @@
-package com.cardpay.pccims.domain.service;
+package com.cardpay.pccims.service;
 
 import org.springframework.stereotype.Service;
 
-import com.cardpay.pccims.domain.model.user.User;
+import com.cardpay.pccims.model.User;
 
 @Service
 public class UserService {

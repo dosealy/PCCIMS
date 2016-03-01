@@ -1,4 +1,4 @@
-package com.cardpay.pccims.domain.shared;
+package com.cardpay.pccims.model.share;
 
 import java.io.Serializable;
 

@@ -1,9 +1,9 @@
-package com.cardpay.pccims.application.util;
+package com.cardpay.pccims.util;
 
 
 import org.springframework.core.convert.converter.Converter;
 
-import com.cardpay.pccims.domain.model.user.User;
+import com.cardpay.pccims.model.User;
 
 public class StringToUserConverter implements Converter<String,User>{
 

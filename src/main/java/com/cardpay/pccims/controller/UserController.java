@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cardpay.pccims.domain.model.user.User;
-import com.cardpay.pccims.domain.service.UserService;
+import com.cardpay.pccims.model.User;
+import com.cardpay.pccims.service.UserService;
 
 @Controller
 @RequestMapping("/user")

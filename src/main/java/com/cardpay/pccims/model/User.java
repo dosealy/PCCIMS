@@ -1,4 +1,4 @@
-package com.cardpay.pccims.domain.model.user;
+package com.cardpay.pccims.model;
 
 import java.util.Date;
 
@@ -11,11 +11,10 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.cardpay.pccims.model.share.Entity;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import com.cardpay.pccims.domain.model.dept.Dept;
-import com.cardpay.pccims.domain.shared.Entity;
 
 @XStreamAlias("message")
 public class User implements Entity<User> {
