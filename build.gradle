@@ -122,7 +122,11 @@ dependencies {
         "org.mybatis:mybatis:3.3.1",
         "org.mybatis:mybatis-spring:1.2.4",
         "mysql:mysql-connector-java:5.1.38",
-        "c3p0:c3p0:0.9.1.2"
+        "c3p0:c3p0:0.9.1.2",
+        "cglib:cglib:3.2.1",
+        "org.fusesource:sigar:1.6.4",
+        "org.aspectj:aspectjweaver:1.8.8",
+        
     )
         
 

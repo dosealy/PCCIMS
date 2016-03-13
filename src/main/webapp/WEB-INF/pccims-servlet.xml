@@ -126,13 +126,14 @@
         
         <!--国际化资源  -->
         <bean id="messageSource"
-                class="org.springframework.context.support.ResourceBundleMessageSource">
+                class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
                 <property name="basenames">
                         <list>
                                 <value>conf/i18n/messages</value>
                                 <value>conf/i18n/content</value>
                         </list>
                 </property>
+                <property name="cacheSeconds" value="3600"/>
         </bean>
         
         <!-- 本地化解析 -->  
@@ -190,7 +191,7 @@
         <!-- 使用spring的会话管理 -->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
                 <property name="dataSource" ref="dataSource" /> 
-       			<property name="mapperLocations" value="classpath*:conf/mappers/*.xml" />
+       			<property name="mapperLocations" value="classpath*:conf/mappers/**/*.xml" />
                 <property name="configLocation" value="classpath:conf/mybatis-config.xml" />
                <!--  <property name="typeAliasesPackage" value="com.cardpay.pccims.model" /> -->
                 <property name="transactionFactory">
