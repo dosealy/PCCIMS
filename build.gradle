@@ -38,10 +38,10 @@ allprojects {
     targetCompatibility = 1.8
 
     repositories { 
-        maven {
-            name "nexus"
-            url "http://127.0.0.1:8081/nexus/content/repositories/public/" 
-        }
+        // maven {
+        //     name "nexus"
+        //     url "http://127.0.0.1:8081/nexus/content/repositories/public/" 
+        // }
         maven { 
             name "oschina"
             url "http://maven.oschina.net/content/groups/public/" 

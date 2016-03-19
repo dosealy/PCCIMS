@@ -28,7 +28,7 @@
 		<package name="com.cardpay.pccims.model"/>
 	</typeAliases> -->
 	<typeAliases>
-	    <typeAlias alias="user" type="com.cardpay.pccims.model.User" />		
+	   <!--  <typeAlias alias="user" type="com.cardpay.pccims.model.User" />		 -->
 	</typeAliases>
 <!-- 	<mappers>
 	    <mapper resource="classpath:com/cardpay/pccims/domain/model/user/User.xml" />
