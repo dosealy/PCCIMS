@@ -19,10 +19,13 @@ public class UserLoginController extends BaseController{
 	@Autowired
 	private UserLoginMapper userLoginMapper;
 	
+	@RequestMapping("listUI")
 	public String listUI(Model model) throws Exception {
 		return Common.BACKGROUND_PATH + "/system/userlogin/list";
 	}
 	
+	@ResponseBody
+	@RequestMapping("findByPage")
 	public PageView findByPage(String pageNow, String pageSize) throws Exception {
 		UserLoginFormMap userLoginFormMap = getFormMap(UserLoginFormMap.class);
 		userLoginFormMap = toFormMap(userLoginFormMap, pageNow, pageSize, userLoginFormMap.getStr("orderby"));
