@@ -9,6 +9,13 @@ apply plugin: 'org.akhikhl.gretty'
 apply from: "$rootDir/gradle/jsDependencies.gradle"
 apply from: "$rootDir/gradle/versionManage.gradle"
 
+eclipse {
+    classpath {
+        downloadSources = true
+    	downloadJavadoc = true       
+    }
+}
+
 war {
     baseName = 'PCCIMS'
     from '/src/main/webapp'                             // adds a file-set to the root of the archive
@@ -91,7 +98,8 @@ dependencies {
         "org.springframework:spring-webmvc:$spring_version",
         "org.springframework:spring-aop:$spring_version",
         "org.springframework:spring-jdbc:$spring_version",
-
+        "org.apache.commons:commons-lang3:3.4",
+		"org.springframework.data:spring-data-jpa:1.9.4.RELEASE",
             
         "org.apache.shiro:shiro-core:$shiro_version",
         "org.apache.shiro:shiro-web:$shiro_version",
